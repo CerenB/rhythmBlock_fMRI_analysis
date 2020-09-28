@@ -7,12 +7,12 @@
   "Steps": [
     {
       "Level": "subject",
-      "AutoContrasts": ["trial_type.CategA", "trial_type.CategB" ],
+      "AutoContrasts": ["trial_type.block_simple", "trial_type.block_complex" ],
       "Contrasts": [
         {
           "Name": "CategA_gt_CategB",
           "ConditionList": [
-            "trial_type.CategA", "trial_type.CategB"
+            "trial_type.block_simple", "trial_type.block_complex""
           ],
           "weights": [1, -1],
           "type": "t"
@@ -20,7 +20,7 @@
         {
           "Name": "CategB_gt_CategA",
           "ConditionList": [
-            "trial_type.CategA", "trial_type.CategB"
+            "trial_type.block_simple", "trial_type.block_complex"
           ],
           "weights": [-1, 1],
           "type": "t"
@@ -28,7 +28,7 @@
         {
           "Name": "AllSounds",
           "ConditionList": [
-            "trial_type.CategA", "trial_type.CategB"
+            "trial_type.block_simple", "trial_type.block_complex"
           ],
           "weights": [0.5, 0.5],
           "type": "t"
@@ -36,7 +36,7 @@
         {
           "Name": "CategA",
           "ConditionList": [
-            "trial_type.CategA", "trial_type.CategB"
+            "trial_type.block_simple", "trial_type.block_complex"
           ],
           "weights": [1,0],
           "type": "t"
@@ -44,7 +44,7 @@
         {
           "Name": "CategB",
           "ConditionList": [
-            "trial_type.CategA", "trial_type.CategB"
+            "trial_type.block_simple", "trial_type.block_complex"
           ],
           "weights": [0,1],
           "type": "t"
