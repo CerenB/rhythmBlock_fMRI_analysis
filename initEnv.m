@@ -17,7 +17,7 @@ function initEnv
     octaveVersion = '4.0.3';
     matlabVersion = '8.6.0';
 
-    installlist = {'io', 'statistics', 'image'};
+    installlist = {'statistics', 'image'};
 
     if isOctave
 
@@ -99,8 +99,9 @@ end
 function addDependencies()
 
     pth = fileparts(mfilename('fullpath'));
-    addpath(genpath(fullfile(pth, 'lib', 'CPP_BIDS', 'src')));
-    addpath(genpath(fullfile(pth, 'lib', 'CPP_PTB', 'src')));
-    addpath(fullfile(pth, 'subfun'));
+    addpath(fullfile(pth, 'lib', 'check_my_code'));
+    addpath(genpath(fullfile(pth, 'lib', 'CPP_BIDS_SPM_pipeline', 'src')));
+    addpath(genpath(fullfile(pth, 'lib', 'CPP_BIDS_SPM_pipeline', 'lib')));
+    addpath(fullfile(pth, 'src'));
 
 end
