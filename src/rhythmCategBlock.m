@@ -19,12 +19,13 @@ checkDependencies();
 
 %% Run batches
 
-% bidsCopyRawFolder(opt, 0);
-% bidsSTC(opt);
+%bidsCopyRawFolder(opt, 0);
+%bidsSTC(opt);
 bidsSpatialPrepro(opt);
-bidsSmoothing(FWHM, opt);
-bidsFFX('specifyAndEstimate', opt, FWHM, isMVPA);
-bidsFFX('contrasts', opt, FWHM, isMVPA);
+% bidsSmoothing(FWHM, opt);
+% bidsFFX('specifyAndEstimate', opt, FWHM, isMVPA);
+% bidsFFX('contrasts', opt, FWHM, isMVPA);
+
 
 % bidsRealignReslice(opt);
 % bidsSmoothing(FWHM, opt);

@@ -12,7 +12,7 @@ function opt = getOptionCategBlock()
     % group of subjects to analyze
     opt.groups = {''};
     % suject to run in each group
-    opt.subjects = {'001'};
+    opt.subjects = {'002'};
 
     % we stay in native space (that of the T1)
     opt.space = 'T1w';
