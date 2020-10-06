@@ -103,6 +103,5 @@ function addDependencies()
     addpath(genpath(fullfile(pth, 'lib', 'CPP_BIDS_SPM_pipeline', 'src')));
     addpath(genpath(fullfile(pth, 'lib', 'CPP_BIDS_SPM_pipeline', 'lib')));
     addpath(fullfile(pth, 'src'));
-    addpath(genpath('/Users/battal/Documents/MATLAB/spm12'));
 
 end
