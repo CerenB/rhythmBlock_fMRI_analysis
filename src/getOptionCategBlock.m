@@ -33,6 +33,7 @@ function opt = getOptionCategBlock()
     opt.model.univariate.file =  ...
         fullfile(fileparts(mfilename('fullpath')), '..', ...
                  'model', 'model-RhythmBlock_smdl.json');
+             
     opt.model.multivariate.file = '';
 
     % specify the result to compute
@@ -82,6 +83,7 @@ function opt = getOptionCategBlock()
     % Options for normalize
     % Voxel dimensions for resampling at normalization of functional data or leave empty [ ].
     opt.funcVoxelDims = [];
+    opt.space = 'MNI';
 
 
 %     % Save the opt variable as a mat file to load directly in the preprocessing
