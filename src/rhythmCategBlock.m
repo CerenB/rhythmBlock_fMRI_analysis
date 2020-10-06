@@ -8,7 +8,7 @@ isMVPA = false;
 cd(fileparts(mfilename('fullpath')));
 
 addpath(fullfile(fileparts(mfilename('fullpath')), '..'));
-%addpath(genpath('/Users/battal/Documents/MATLAB/spm12'));
+% addpath(genpath('/Users/battal/Documents/MATLAB/spm12'));
 
 initEnv();
 
@@ -19,11 +19,12 @@ checkDependencies();
 
 %% Run batches
 
-%bidsCopyRawFolder(opt, 0);
-%bidsSTC(opt);
-%bidsSpatialPrepro(opt);
-%bidsSmoothing(FWHM, opt);
+% bidsCopyRawFolder(opt, 0);
+% bidsSTC(opt);
+bidsSpatialPrepro(opt);
+bidsSmoothing(FWHM, opt);
 bidsFFX('specifyAndEstimate', opt, FWHM, isMVPA);
+bidsFFX('contrasts', opt, FWHM, isMVPA);
 
 % bidsRealignReslice(opt);
 % bidsSmoothing(FWHM, opt);
