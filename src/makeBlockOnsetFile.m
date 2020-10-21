@@ -3,17 +3,19 @@ function makeBlockOnsetFile(runNb, copyFile, varargin)
     % for FFX
 
     currDir = cd();
+    sub = '009';
+    
     % define the path
     if nargin < 3
         pth = ['/Users/battal/Cerens_files/fMRI/Processed/RhythmCateg/'...
-               'BlockDesign/raw/sub-002/ses-001/func'];
+               'Pilots/SequenceTest/raw/sub-',sub,'/ses-001/func'];
     else
         pth = varargin{1};
     end
 
     cd(pth);
     outputpth = ['/Users/battal/Cerens_files/fMRI/Processed/RhythmCateg/'...
-                 'BlockDesign/source/sub-002/ses-001/func'];
+                 'Pilots/SequenceTest/source/sub-',sub,'/ses-001/func'];
 
     % define what you want to filter
     columnName = 'trial_type';
@@ -23,11 +25,11 @@ function makeBlockOnsetFile(runNb, copyFile, varargin)
 
     % loop through the Run number
     for irun = 1:runNb
-        tsv = ['sub-002_ses-001_task-RhythmCategBlock_run-00', num2str(irun), ...
+        tsv = ['sub-',sub,'_ses-001_task-RhythmCategBlock_run-00', num2str(irun), ...
                '_events.tsv'];
 
         if irun > 9
-            tsv = ['sub-002_ses-001_task-RhythmCategBlock_run-0', num2str(irun), ...
+            tsv = ['sub-',sub,'_ses-001_task-RhythmCategBlock_run-0', num2str(irun), ...
                    '_events.tsv'];
         end
 
