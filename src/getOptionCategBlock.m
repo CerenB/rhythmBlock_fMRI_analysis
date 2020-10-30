@@ -36,24 +36,7 @@ function opt = getOptionCategBlock()
 
     opt.model.multivariate.file = '';
 
-    % specify the result to compute
-    % Contrasts.Name has to match one of the contrast defined in the model json file
-    %     opt.result.Steps(1) = struct( ...
-    %         'Level',  'dataset', ...
-    %         'Contrasts', struct( ...
-    %                         'Name', 'AllSounds', ... %
-    %                         'Mask', false, ... % this might need improving if a mask is required
-    %                         'MC', 'none', ... FWE, none, FDR
-    %                         'p', 0.001, ...
-    %                         'k', 0, ...
-    %                         'NIDM', true));
-
     % Options for slice time correction
-    % If left unspecified the slice timing will be done using the mid-volume acquisition
-    % time point as reference.
-    % Slice order must be entered in time unit (s) (this is the BIDS way of doing things)
-    % instead of the slice index of the reference slice (the "SPM" way of doing things).
-    % More info here: https://en.wikibooks.org/wiki/SPM/Slice_Timing
 
     % sub-001
     %     opt.sliceOrder = [0;1.3000;0.0590;1.3591;0.1181;1.4182;0.1772;1.4773; ...
@@ -77,7 +60,7 @@ function opt = getOptionCategBlock()
 
     % Options for normalize
     % Voxel dimensions for resampling at normalization of functional data or leave empty [ ].
-    opt.funcVoxelDims = [2.7 2.7 2.7];
+    opt.funcVoxelDims = [2.6 2.6 2.6];
     opt.space = 'MNI';
 
     %     % Save the opt variable as a mat file to load directly in the preprocessing
