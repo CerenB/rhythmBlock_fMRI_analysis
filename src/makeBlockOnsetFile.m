@@ -9,14 +9,14 @@ function makeBlockOnsetFile(runNb, copyFile, varargin)
     if nargin < 3
         pth = ['/Users/battal/Cerens_files/fMRI/Processed/RhythmCateg/'...
                'Pilots/RhythmBlock/raw/sub-', sub, '/ses-001/func'];
-           
+
     else
         pth = varargin{1};
     end
 
     cd(pth);
-        outputpth = ['/Users/battal/Cerens_files/fMRI/Processed/RhythmCateg/'...
-               'Pilots/RhythmBlock/source/sub-', sub, '/ses-001/func'];
+    outputpth = ['/Users/battal/Cerens_files/fMRI/Processed/RhythmCateg/'...
+                 'Pilots/RhythmBlock/source/sub-', sub, '/ses-001/func'];
 
     % define what you want to filter
     columnName = 'trial_type';
