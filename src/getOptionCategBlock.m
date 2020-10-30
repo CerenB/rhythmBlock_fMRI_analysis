@@ -12,7 +12,7 @@ function opt = getOptionCategBlock()
     % group of subjects to analyze
     opt.groups = {''};
     % suject to run in each group
-    opt.subjects = {'001'};
+    opt.subjects = {'pil001'};
 
     % we stay in native space (that of the T1)
     opt.space = 'T1w';
@@ -70,7 +70,7 @@ function opt = getOptionCategBlock()
 
     % Options for normalize
     % Voxel dimensions for resampling at normalization of functional data or leave empty [ ].
-    opt.funcVoxelDims = [2.6 2.6 2.6];
+    opt.funcVoxelDims = []; %2.6 2.6 2.6
     opt.space = 'MNI';
 
     %     % Save the opt variable as a mat file to load directly in the preprocessing
