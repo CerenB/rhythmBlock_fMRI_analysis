@@ -3,19 +3,20 @@ function makeBlockOnsetFile(runNb, copyFile, varargin)
     % for FFX
 
     currDir = cd();
-    sub = '009';
+    sub = 'pil001';
 
     % define the path
     if nargin < 3
         pth = ['/Users/battal/Cerens_files/fMRI/Processed/RhythmCateg/'...
-               'Pilots/SequenceTest/raw/sub-', sub, '/ses-001/func'];
+               'Pilots/RhythmBlock/raw/sub-', sub, '/ses-001/func'];
+           
     else
         pth = varargin{1};
     end
 
     cd(pth);
-    outputpth = ['/Users/battal/Cerens_files/fMRI/Processed/RhythmCateg/'...
-                 'Pilots/SequenceTest/source/sub-', sub, '/ses-001/func'];
+        outputpth = ['/Users/battal/Cerens_files/fMRI/Processed/RhythmCateg/'...
+               'Pilots/RhythmBlock/source/sub-', sub, '/ses-001/func'];
 
     % define what you want to filter
     columnName = 'trial_type';
@@ -39,7 +40,7 @@ function makeBlockOnsetFile(runNb, copyFile, varargin)
         % call function to read & save filtered .tsv file
         readAndFilterLogfile(columnName, filterBy, 1, tsv);
 
-        % move the filtered to the relavent folder
+        % move the filtered to the relevent folder
         if copyFile
             [success] = movefile(outputFileName, outputpth);
             display(success);
