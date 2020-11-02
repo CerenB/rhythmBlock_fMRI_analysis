@@ -70,11 +70,11 @@ function opt = getOptionCategBlock()
 
     % Options for normalize
     % Voxel dimensions for resampling at normalization of functional data or leave empty [ ].
-    opt.funcVoxelDims = []; %2.6 2.6 2.6
+    opt.funcVoxelDims = []; % 2.6 2.6 2.6
     opt.space = 'MNI';
 
-    %     % Save the opt variable as a mat file to load directly in the preprocessing
-    %     % scripts
-    %     save('opt.mat', 'opt');
+    %% DO NOT TOUCH
+    opt = checkOptions(opt);
+    saveOptions(opt);
 
 end
