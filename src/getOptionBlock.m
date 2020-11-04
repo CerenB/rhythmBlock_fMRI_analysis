@@ -1,6 +1,6 @@
 % (C) Copyright 2019 CPP BIDS SPM-pipeline developpers
 
-function opt = getOptionCategBlock()
+function opt = getOptionBlock()
     % opt = getOption()
     % returns a structure that contains the options chosen by the user to run
     % slice timing correction, pre-processing, FFX, RFX.
@@ -15,14 +15,14 @@ function opt = getOptionCategBlock()
     opt.subjects = {'pil001'};
 
     % we stay in native space (that of the T1)
-    opt.space = 'T1w';
+    opt.space = 'MNI'; % 'individual', 'MNI'
 
     % The directory where the data are located
     opt.dataDir = fullfile(fileparts(mfilename('fullpath')), ...
                            '..', '..', '..',  'raw');
 
     % task to analyze
-    opt.taskName = 'RhythmCategBlock';
+    opt.taskName = 'RhythmBlock';
 
     % Suffix output directory for the saved jobs
     opt.jobsDir = fullfile( ...
@@ -70,8 +70,7 @@ function opt = getOptionCategBlock()
 
     % Options for normalize
     % Voxel dimensions for resampling at normalization of functional data or leave empty [ ].
-    opt.funcVoxelDims = []; % 2.6 2.6 2.6
-    opt.space = 'MNI';
+    opt.funcVoxelDims = [2.6 2.6 2.6]; % 2.6 2.6 2.6
 
     %% DO NOT TOUCH
     opt = checkOptions(opt);

@@ -8,12 +8,14 @@ isMVPA = false;
 cd(fileparts(mfilename('fullpath')));
 
 addpath(fullfile(fileparts(mfilename('fullpath')), '..'));
+warning('off');
 % addpath(genpath('/Users/battal/Documents/MATLAB/spm12'));
+% spm fmri
 
 initEnv();
 
 % we add all the subfunctions that are in the sub directories
-opt = getOptionCategBlock();
+opt = getOptionBlock();
 
 checkDependencies();
 
