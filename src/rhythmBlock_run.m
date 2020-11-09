@@ -1,9 +1,6 @@
 clear;
 clc;
 
-% Smoothing to apply
-FWHM = 6;
-isMVPA = false;
 
 cd(fileparts(mfilename('fullpath')));
 
@@ -26,20 +23,24 @@ checkDependencies();
 
 % In case you just want to run segmentation and skull stripping
 % Skull stripping is also included in 'bidsSpatialPrepro'
-% bidsSegmentSkullStrip(opt);
+bidsSegmentSkullStrip(opt);
 
-% bidsSTC(opt);
+bidsSTC(opt);
 
-% bidsSpatialPrepro(opt);
+bidsSpatialPrepro(opt);
 
-% The following do not run on octave for now (because of spmup)
+% Quality control
 anatomicalQA(opt);
 bidsResliceTpmToFunc(opt);
 functionalQA(opt);
 
+% smoothing
+FWHM = 3;
 bidsSmoothing(FWHM, opt);
 
 % The following crash on Travis CI
 bidsFFX('specifyAndEstimate', opt, FWHM);
 bidsFFX('contrasts', opt, FWHM);
 % bidsResults(opt, FWHM);
+
+%isMVPA = false;

@@ -14,7 +14,13 @@ function opt = getOptionBlock()
     % suject to run in each group
     opt.subjects = {'pil001'};
 
+    
+    % Uncomment the lines below to run preprocessing
+    % - don't use realign and unwarp
+    opt.realign.useUnwarp = true;
+ 
     % we stay in native space (that of the T1)
+    % - in "native" space: don't do normalization
     opt.space = 'individual'; % 'individual', 'MNI'
 
     % The directory where the data are located
