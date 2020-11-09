@@ -1,4 +1,4 @@
-function outputFiltered = makeFilterTagInLogfile(subNb, runNb, columnName, filterTag, saveOutputTsv)
+function outputFiltered = makeFilterTag(subNb, runNb, columnName, filterTag, saveOutputTsv)
     % It will make filter_tag in the specified column to be filtered later
     % on for making onset files
     % It will display in the command window the content of the `output.tsv' filtered by one element
