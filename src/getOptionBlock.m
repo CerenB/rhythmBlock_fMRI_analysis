@@ -26,6 +26,7 @@ function opt = getOptionBlock()
     % The directory where the data are located
     opt.dataDir = fullfile(fileparts(mfilename('fullpath')), ...
                            '..', '..', '..',  'raw');
+    opt.derivativesDir = fullfile(opt.dataDir,'..');
 
     % task to analyze
     opt.taskName = 'RhythmBlock';
