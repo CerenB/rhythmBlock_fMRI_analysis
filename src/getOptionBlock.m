@@ -68,7 +68,7 @@ function opt = getOptionBlock()
 
     % Options for normalize
     % Voxel dimensions for resampling at normalization of functional data or leave empty [ ].
-    opt.funcVoxelDims = [2.6 2.6 2.6]; 
+    opt.funcVoxelDims = [2.6 2.6 2.6];
 
     %% DO NOT TOUCH
     opt = checkOptions(opt);
