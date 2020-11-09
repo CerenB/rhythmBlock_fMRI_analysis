@@ -7,4 +7,5 @@
 *.tsv
 *.mat
 
-src/*.json
+options_task-*date*.json
+onsets*_events.mat	onsets*_events.mat
