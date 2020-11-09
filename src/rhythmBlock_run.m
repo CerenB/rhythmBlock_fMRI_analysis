@@ -1,7 +1,6 @@
 clear;
 clc;
 
-
 cd(fileparts(mfilename('fullpath')));
 
 addpath(fullfile(fileparts(mfilename('fullpath')), '..'));
@@ -43,4 +42,4 @@ bidsFFX('specifyAndEstimate', opt, FWHM);
 bidsFFX('contrasts', opt, FWHM);
 % bidsResults(opt, FWHM);
 
-%isMVPA = false;
+% isMVPA = false;
