@@ -22,24 +22,24 @@ checkDependencies();
 
 % In case you just want to run segmentation and skull stripping
 % Skull stripping is also included in 'bidsSpatialPrepro'
-bidsSegmentSkullStrip(opt);
+% bidsSegmentSkullStrip(opt);
 
-bidsSTC(opt);
+% bidsSTC(opt);
 
-bidsSpatialPrepro(opt);
+% bidsSpatialPrepro(opt);
 
 % Quality control
-anatomicalQA(opt);
-bidsResliceTpmToFunc(opt);
-functionalQA(opt);
+% anatomicalQA(opt);
+% bidsResliceTpmToFunc(opt);
+% functionalQA(opt);
 
 % smoothing
 FWHM = 3;
-bidsSmoothing(FWHM, opt);
+% bidsSmoothing(FWHM, opt);
+%
+% % The following crash on Travis CI
+% bidsFFX('specifyAndEstimate', opt, FWHM);
+% bidsFFX('contrasts', opt, FWHM);
 
-% The following crash on Travis CI
-bidsFFX('specifyAndEstimate', opt, FWHM);
-bidsFFX('contrasts', opt, FWHM);
 % bidsResults(opt, FWHM);
-
 % isMVPA = false;
