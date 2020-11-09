@@ -15,17 +15,19 @@ function maskPath = makeNativeSpaceMask(imagePath)
     maskPath = fullfile(path, maskFileName);
 
     % STEP 2
-    % Create a template & load the mask
-    % A = load_untouch_nii('bet_05_meanuasub-pil001-PitchFT_run-001.nii');
-    A = load_untouch_nii(betImagePath);
+    if ~exist(maskPath)
+        % Create a template & load the mask
+        % A = load_untouch_nii('bet_05_meanuasub-pil001-PitchFT_run-001.nii');
+        A = load_untouch_nii(betImagePath);
 
-    C = A;
-    C.fileprefix = 'C';
-    C.img = [];
+        C = A;
+        C.fileprefix = 'C';
+        C.img = [];
 
-    idx = find(A.img > 0);
-    A.img(idx) = 1;
-    C.img = A.img;
-    save_untouch_nii(C, maskPath);
+        idx = find(A.img > 0);
+        A.img(idx) = 1;
+        C.img = A.img;
+        save_untouch_nii(C, maskPath);
+    end
 
 end
