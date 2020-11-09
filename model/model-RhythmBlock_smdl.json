@@ -2,7 +2,7 @@
   "Name": "Rhythm Block design",
   "Description": "contrasts for the rhythmic block design dataset",
   "Input": {
-    "task": "RhythmCategBlock"
+    "task": "RhythmBlock"
   },
   "Steps": [
     {
