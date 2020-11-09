@@ -11,6 +11,7 @@ addpath(fullfile(fileparts(mfilename('fullpath')), '..'));
 warning('off');
 % addpath(genpath('/Users/battal/Documents/MATLAB/spm12'));
 % spm fmri
+% addpath(genpath('/Users/battal/Documents/MATLAB/bspmview-master'));
 
 initEnv();
 
@@ -20,25 +21,25 @@ opt = getOptionBlock();
 checkDependencies();
 
 %% Run batches
-reportBIDS(opt);
-bidsCopyRawFolder(opt, 1);
+%reportBIDS(opt);
+%bidsCopyRawFolder(opt, 1);
 
 % In case you just want to run segmentation and skull stripping
 % Skull stripping is also included in 'bidsSpatialPrepro'
 % bidsSegmentSkullStrip(opt);
 
-bidsSTC(opt);
+%bidsSTC(opt);
 
-bidsSpatialPrepro(opt);
+% bidsSpatialPrepro(opt);
 
 % The following do not run on octave for now (because of spmup)
-% anatomicalQA(opt);
-% bidsResliceTpmToFunc(opt);
-% functionalQA(opt);
+  anatomicalQA(opt);
+  bidsResliceTpmToFunc(opt);
+  functionalQA(opt);
 
-bidsSmoothing(FWHM, opt);
+ bidsSmoothing(FWHM, opt);
 
 % The following crash on Travis CI
-% bidsFFX('specifyAndEstimate', opt, FWHM);
-% bidsFFX('contrasts', opt, FWHM);
+ bidsFFX('specifyAndEstimate', opt, FWHM);
+ bidsFFX('contrasts', opt, FWHM);
 % bidsResults(opt, FWHM);

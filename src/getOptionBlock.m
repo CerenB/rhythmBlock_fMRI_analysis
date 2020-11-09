@@ -15,7 +15,7 @@ function opt = getOptionBlock()
     opt.subjects = {'pil001'};
 
     % we stay in native space (that of the T1)
-    opt.space = 'MNI'; % 'individual', 'MNI'
+    opt.space = 'individual'; % 'individual', 'MNI'
 
     % The directory where the data are located
     opt.dataDir = fullfile(fileparts(mfilename('fullpath')), ...
@@ -30,11 +30,9 @@ function opt = getOptionBlock()
                            'SPM12_CPPL', 'JOBS', opt.taskName);
 
     % specify the model file that contains the contrasts to compute
-    opt.model.univariate.file =  ...
+    opt.model.file =  ...
         fullfile(fileparts(mfilename('fullpath')), '..', ...
-                 'model', 'model-RhythmCategBlock_smdl.json');
-
-    opt.model.multivariate.file = '';
+                 'model', 'model-RhythmBlock_smdl.json');
 
     % Options for slice time correction
 
@@ -70,7 +68,7 @@ function opt = getOptionBlock()
 
     % Options for normalize
     % Voxel dimensions for resampling at normalization of functional data or leave empty [ ].
-    opt.funcVoxelDims = [2.6 2.6 2.6]; % 2.6 2.6 2.6
+    opt.funcVoxelDims = [2.6 2.6 2.6]; 
 
     %% DO NOT TOUCH
     opt = checkOptions(opt);
