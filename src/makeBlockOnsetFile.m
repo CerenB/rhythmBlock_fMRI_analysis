@@ -3,7 +3,7 @@ function makeBlockOnsetFile(runNb, copyFile, varargin)
     % for FFX
 
     currDir = cd();
-    sub = 'pil001';
+    sub = 'pil002';
 
     % define the path
     if nargin < 3
@@ -26,11 +26,11 @@ function makeBlockOnsetFile(runNb, copyFile, varargin)
 
     % loop through the Run number
     for irun = 1:runNb
-        tsv = ['sub-', sub, '_ses-001_task-RhythmCategBlock_run-00', num2str(irun), ...
+        tsv = ['sub-', sub, '_ses-001_task-RhythmBlock_run-00', num2str(irun), ...
                '_events.tsv'];
 
         if irun > 9
-            tsv = ['sub-', sub, '_ses-001_task-RhythmCategBlock_run-0', num2str(irun), ...
+            tsv = ['sub-', sub, '_ses-001_task-RhythmBlock_run-0', num2str(irun), ...
                    '_events.tsv'];
         end
 
