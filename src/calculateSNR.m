@@ -20,7 +20,7 @@ initEnv();
 checkDependencies();
 
 % subject to run
-opt.subject = {'pil001'};
+opt.subject = {'001'};
 opt.taskName = 'RhythmBlock';
 opt.space = 'individual';
 
@@ -40,7 +40,7 @@ mask = spm_read_vols(maskFile);
 
 % mri.repetition time(TR) and repetition of steps/categA
 repetitionTime = 1.75;
-stepDuration = 36.48;
+stepDuration = 18.24; %18.24 %36.48
 
 % calculate frequencies
 oddballFreq = 1 / stepDuration;
@@ -188,7 +188,8 @@ for iRun = 1:nRuns
     new_nii.hdr.dime.dim(2:5) = [dims(1) dims(2) dims(3) 1];
 
     FileName = fullfile(opt.derivativesDir, '..', ...
-                        'FFT_RnB', ['SNR_sub-', ...
+                        'FFT_RnB',['sub-',opt.subject{1}],...
+                        'ses-001',['SNR_sub-', ...
                                     opt.subject{1}, '_ses-001_task-', ...
                                     opt.taskName, '_run-00', num2str(iRun), ...
                                     '_bold.nii']);
@@ -223,11 +224,13 @@ new_nii = make_nii(zmap3Dmask);
 new_nii.hdr = mask_new.hdr;
 new_nii.hdr.dime.dim(2:5) = [dims(1) dims(2) dims(3) 1];
 FileName = fullfile(opt.derivativesDir, '..', ...
-                    'FFT_RnB', ['AvgSNR_sub-', ...
-                                opt.subject{1}, '_ses-001_task-', ...
-                                opt.taskName, ...
-                                '_bold.nii']);
+                    'FFT_RnB',['sub-',opt.subject{1}],...
+                        'ses-001',['AvgSNR_sub-', ...
+                     opt.subject{1}, '_ses-001_task-', ...
+                     opt.taskName, '_bold.nii']);
 save_nii(new_nii, FileName);
+
+
 
 function opt = getSpecificBoldFiles(opt)
 

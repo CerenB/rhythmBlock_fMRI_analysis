@@ -23,15 +23,15 @@ checkDependencies();
 % % In case you just want to run segmentation and skull stripping
 % % Skull stripping is also included in 'bidsSpatialPrepro'
 %  bidsSegmentSkullStrip(opt);
-% 
+% % 
 %  bidsSTC(opt);
-% 
+% % 
 %  bidsSpatialPrepro(opt);
 
 % Quality control
- anatomicalQA(opt);
- bidsResliceTpmToFunc(opt);
- functionalQA(opt);
+%  anatomicalQA(opt);
+%  bidsResliceTpmToFunc(opt);
+%  functionalQA(opt);
 
 % smoothing
 FWHM = 3;
