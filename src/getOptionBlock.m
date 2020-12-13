@@ -12,7 +12,7 @@ function opt = getOptionBlock()
     % group of subjects to analyze
     opt.groups = {''};
     % suject to run in each group
-    opt.subjects = {'001'};
+    opt.subjects = {'002'};
 
     % Uncomment the lines below to run preprocessing
     % - don't use realign and unwarp
@@ -20,7 +20,7 @@ function opt = getOptionBlock()
 
     % we stay in native space (that of the T1)
     % - in "native" space: don't do normalization
-    opt.space = 'MNI'; % 'individual', 'MNI'
+    opt.space = 'individual'; % 'individual', 'MNI'
 
     % The directory where the data are located
     opt.dataDir = fullfile(fileparts(mfilename('fullpath')), ...
