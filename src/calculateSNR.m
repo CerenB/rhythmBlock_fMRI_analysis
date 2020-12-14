@@ -41,7 +41,7 @@ mask = spm_read_vols(maskFile);
 
 % mri.repetition time(TR) and repetition of steps/categA
 repetitionTime = 1.75;
-stepDuration = 36.48; %18.24 %36.48
+stepDuration = 36.48; % 18.24 %36.48
 
 % calculate frequencies
 oddballFreq = 1 / stepDuration;
