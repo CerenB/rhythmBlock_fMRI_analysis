@@ -45,7 +45,7 @@ mask = spm_read_vols(maskFile);
 %% setup parameters for FFT analysis
 % mri.repetition time(TR) and repetition of steps/categA
 repetitionTime = 1.75;
-opt.stepSize = 4;
+opt.stepSize = 2;
 stepDuration = 36.48;
 
 % only in block design, we also check for stepSize =2
@@ -330,10 +330,12 @@ stepFolder = ['step',num2str(opt.stepSize)];
 dirsToMake = {subject, session,stepFolder}; 
 
 % create subject folder witn subfolders if doesn't exist
-if ~exist(fullfile(subjectDestDir, subject), 'dir')
-    for idir = 1:length(dirsToMake) 
-        Thisdir = fullfile(subjectDestDir, dirsToMake{1:idir}); 
-        mkdir(Thisdir);
+if ~exist(fullfile(subjectDestDir, subject,session,stepFolder), 'dir')
+    for idir = 1:length(dirsToMake)
+        Thisdir = fullfile(subjectDestDir, dirsToMake{1:idir});
+        if ~exist(Thisdir)
+            mkdir(Thisdir);
+        end
     end
 end
                
