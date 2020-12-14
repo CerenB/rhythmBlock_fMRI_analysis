@@ -5,7 +5,7 @@ cd(fileparts(mfilename('fullpath')));
 
 addpath(fullfile(fileparts(mfilename('fullpath')), '..'));
 warning('off');
-% addpath(genpath('/Users/battal/Documents/MATLAB/spm12'));
+addpath(genpath('/Users/battal/Documents/MATLAB/spm12'));
 % spm fmri
 % addpath(genpath('/Users/battal/Documents/MATLAB/bspmview-master'));
 
@@ -17,21 +17,21 @@ opt = getOptionBlock();
 checkDependencies();
 
 %% Run batches
-%  reportBIDS(opt);
-%  bidsCopyRawFolder(opt, 1);
-% 
+reportBIDS(opt);
+bidsCopyRawFolder(opt, 1);
+%
 % % In case you just want to run segmentation and skull stripping
 % % Skull stripping is also included in 'bidsSpatialPrepro'
 %  bidsSegmentSkullStrip(opt);
-% % 
-%  bidsSTC(opt);
-% % 
-%  bidsSpatialPrepro(opt);
+% %
+bidsSTC(opt);
+% %
+bidsSpatialPrepro(opt);
 
 % Quality control
-%  anatomicalQA(opt);
-%  bidsResliceTpmToFunc(opt);
-%  functionalQA(opt);
+anatomicalQA(opt);
+bidsResliceTpmToFunc(opt);
+functionalQA(opt);
 
 % smoothing
 FWHM = 3;
