@@ -22,10 +22,11 @@ initEnv();
 checkDependencies();
 
 % subject to run
-opt.subject = {'002'};
+opt.subject = {'006'};
 opt.session = {'001'};
 opt.taskName = 'RhythmBlock';
 opt.space = 'individual';
+opt.stepSize = 4;
 
 opt.derivativesDir = fullfile(fileparts(mfilename('fullpath')), ...
                               '..', '..', '..',  'derivatives', 'cpp_spm');
@@ -44,7 +45,6 @@ mask = spm_read_vols(maskFile);
 %% setup parameters for FFT analysis
 % mri.repetition time(TR) and repetition of steps/categA
 repetitionTime = 1.75;
-opt.stepSize = 2;
 stepDuration = 36.48;
 
 % only in block design, we also check for stepSize =2
