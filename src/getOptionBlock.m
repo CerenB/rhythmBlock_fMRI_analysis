@@ -12,7 +12,7 @@ function opt = getOptionBlock()
     % group of subjects to analyze
     opt.groups = {''};
     % suject to run in each group
-    opt.subjects = {'002'};
+    opt.subjects = {'001'};
 
     % Uncomment the lines below to run preprocessing
     % - don't use realign and unwarp
@@ -43,7 +43,7 @@ function opt = getOptionBlock()
     % specify the result to compute
     % Contrasts.Name has to match one of the contrast defined in the model json file
     opt.result.Steps(1) = struct( ...
-                                 'Level',  'dataset', ...
+                                 'Level',  'subject', ...
                                  'Contrasts', struct( ...
                                                      'Name', 'AllCateg', ... %
                                                      'Mask', false, ...
@@ -51,6 +51,7 @@ function opt = getOptionBlock()
                                                      'p', 0.05, ...
                                                      'k', 0, ...
                                                      'NIDM', true));
+                                                 
 
     % Options for slice time correction
 
