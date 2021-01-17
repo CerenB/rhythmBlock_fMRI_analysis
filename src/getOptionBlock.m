@@ -12,7 +12,8 @@ function opt = getOptionBlock()
   % group of subjects to analyze
   opt.groups = {''};
   % suject to run in each group
-  opt.subjects = {'001'};
+  opt.subjects = {'002'}; 
+  % '001', '002', '003', '004', '005', '006','007','008', '009', '010', '011'
 
   % Uncomment the lines below to run preprocessing
   % - don't use realign and unwarp
@@ -20,7 +21,7 @@ function opt = getOptionBlock()
 
   % we stay in native space (that of the T1)
   % - in "native" space: don't do normalization
-  opt.space = 'individual'; % 'individual', 'MNI'
+  opt.space = 'MNI'; % 'individual', 'MNI'
 
   % The directory where the data are located
   opt.dataDir = fullfile(fileparts(mfilename('fullpath')), ...
@@ -59,10 +60,16 @@ function opt = getOptionBlock()
   %    - 'FDR'
   %    - 'none'
   %
-  %   opt.result.Steps(1).Contrasts(2).Name = 'listening_inf_baseline';
-  %   opt.result.Steps(1).Contrasts(2).MC =  'none';
-  %   opt.result.Steps(1).Contrasts(2).p = 0.01;
-  %   opt.result.Steps(1).Contrasts(2).k = 0;
+  % not working for multiple contrasts 
+%   opt.result.Steps(1).Contrasts(2).Name = 'CategA_gt_CategB';
+%   opt.result.Steps(1).Contrasts(2).MC =  'none';
+%   opt.result.Steps(1).Contrasts(2).p = 0.001;
+%   opt.result.Steps(1).Contrasts(2).k = 0;
+%   
+%   opt.result.Steps(1).Contrasts(3).Name = 'CategB_gt_CategA';
+%   opt.result.Steps(1).Contrasts(3).MC =  'none';
+%   opt.result.Steps(1).Contrasts(3).p = 0.001;
+%   opt.result.Steps(1).Contrasts(3).k = 0;
 
   % Specify how you want your output (all the following are on false by default)
   opt.result.Steps(1).Output.png = true();
@@ -74,7 +81,7 @@ function opt = getOptionBlock()
   opt.result.Steps(1).Output.binary = true();
 
   opt.result.Steps(1).Output.montage.do = true();
-  opt.result.Steps(1).Output.montage.slices = -8:3:15; % in mm
+  opt.result.Steps(1).Output.montage.slices = -12:4:60; % in mm -8:3:15;
   % axial is default 'sagittal', 'coronal'
   opt.result.Steps(1).Output.montage.orientation = 'axial';
 
@@ -82,7 +89,7 @@ function opt = getOptionBlock()
   % changed.
   opt.result.Steps(1).Output.montage.background = ...
       fullfile(spm('dir'), 'canonical', 'avg152T1.nii,1');
-  %
+
   %   opt.result.Steps(1).Output.NIDM_results = true();
 
   % Options for slice time correction
@@ -120,6 +127,10 @@ function opt = getOptionBlock()
   % Options for normalize
   % Voxel dimensions for resampling at normalization of functional data or leave empty [ ].
   opt.funcVoxelDims = [2.6 2.6 2.6];
+  
+  opt.parallelize.do = false;
+  opt.parallelize.nbWorkers = 1;
+  opt.parallelize.killOnExit = true; 
 
   %% DO NOT TOUCH
   opt = checkOptions(opt);
