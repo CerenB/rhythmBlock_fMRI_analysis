@@ -1,7 +1,7 @@
 clear;
 clc;
 
-cd(fileparts(mfilename('fullpath')));
+%cd(fileparts(mfilename('fullpath')));
 
 addpath(fullfile(fileparts(mfilename('fullpath')), '..'));
 warning('off');
@@ -34,12 +34,31 @@ bidsResliceTpmToFunc(opt);
 functionalQA(opt);
 
 % smoothing
-FWHM = 3;
-bidsSmoothing(FWHM, opt);
-%
-% % The following crash on Travis CI
-bidsFFX('specifyAndEstimate', opt, FWHM);
-bidsFFX('contrasts', opt, FWHM);
+funcFWHM = 6;
+conFWHM = 8;
+
+bidsSmoothing(funcFWHM, opt);
+
+
+% subject level univariate
+bidsFFX('specifyAndEstimate', opt, funcFWHM);
+bidsFFX('contrasts', opt, funcFWHM);
+
+%visualise the results 
+bidsResults(opt, funcFWHM);
+
+% group level univariate
+bidsRFX('smoothContrasts', opt,funcFWHM, conFWHM);
+bidsRFX('RFX', opt, funcFWHM, conFWHM);
+
+% WIP: group level results
 % bidsResults(opt, FWHM);
 
+
 % isMVPA = false;
+
+
+
+
+
+
