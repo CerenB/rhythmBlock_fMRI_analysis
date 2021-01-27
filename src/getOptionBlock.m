@@ -12,7 +12,7 @@ function opt = getOptionBlock()
   % group of subjects to analyze
   opt.groups = {''};
   % suject to run in each group
-  opt.subjects = {'002'}; 
+  opt.subjects = {'011'}; 
   % '001', '002', '003', '004', '005', '006','007','008', '009', '010', '011'
 
   % Uncomment the lines below to run preprocessing
@@ -51,6 +51,9 @@ function opt = getOptionBlock()
   opt.result.Steps(1).Level = 'subject';
 
   opt.result.Steps(1).Contrasts(1).Name = 'AllCateg';
+  opt.result.Steps(1).Contrasts(1).MC =  'none';
+  opt.result.Steps(1).Contrasts(1).p = 0.001;
+  opt.result.Steps(1).Contrasts(1).k = 0;
 
   % For each contrats, you can adapt:
   %  - voxel level (p)
@@ -61,15 +64,15 @@ function opt = getOptionBlock()
   %    - 'none'
   %
   % not working for multiple contrasts 
-%   opt.result.Steps(1).Contrasts(2).Name = 'CategA_gt_CategB';
-%   opt.result.Steps(1).Contrasts(2).MC =  'none';
-%   opt.result.Steps(1).Contrasts(2).p = 0.001;
-%   opt.result.Steps(1).Contrasts(2).k = 0;
+  opt.result.Steps(1).Contrasts(2).Name = 'CategA_gt_CategB';
+  opt.result.Steps(1).Contrasts(2).MC =  'none';
+  opt.result.Steps(1).Contrasts(2).p = 0.001;
+  opt.result.Steps(1).Contrasts(2).k = 0;
 %   
-%   opt.result.Steps(1).Contrasts(3).Name = 'CategB_gt_CategA';
-%   opt.result.Steps(1).Contrasts(3).MC =  'none';
-%   opt.result.Steps(1).Contrasts(3).p = 0.001;
-%   opt.result.Steps(1).Contrasts(3).k = 0;
+  opt.result.Steps(1).Contrasts(3).Name = 'CategB_gt_CategA';
+  opt.result.Steps(1).Contrasts(3).MC =  'none';
+  opt.result.Steps(1).Contrasts(3).p = 0.001;
+  opt.result.Steps(1).Contrasts(3).k = 0;
 
   % Specify how you want your output (all the following are on false by default)
   opt.result.Steps(1).Output.png = true();
@@ -128,8 +131,8 @@ function opt = getOptionBlock()
   % Voxel dimensions for resampling at normalization of functional data or leave empty [ ].
   opt.funcVoxelDims = [2.6 2.6 2.6];
   
-  opt.parallelize.do = false;
-  opt.parallelize.nbWorkers = 1;
+  opt.parallelize.do = true;
+  opt.parallelize.nbWorkers = 4;
   opt.parallelize.killOnExit = true; 
 
   %% DO NOT TOUCH
