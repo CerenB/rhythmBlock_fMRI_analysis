@@ -12,8 +12,8 @@ function opt = getOptionBlock()
   % group of subjects to analyze
   opt.groups = {''};
   % suject to run in each group
-  opt.subjects = {'011'}; 
-  % '001', '002', '003', '004', '005', '006','007','008', '009', '010', '011'
+  opt.subjects = {'011'};
+  % '001', '002', '003', '004', '005', '006','007','008', '009', '010',
 
   % Uncomment the lines below to run preprocessing
   % - don't use realign and unwarp
@@ -37,9 +37,14 @@ function opt = getOptionBlock()
                          'cpp_spm', 'JOBS', opt.taskName);
 
   % specify the model file that contains the contrasts to compute
+  % univariate
+  %   opt.model.file =  ...
+  %       fullfile(fileparts(mfilename('fullpath')), '..', ...
+  %                'model', 'model-RhythmBlock_smdl.json');
+  % multivariate
   opt.model.file =  ...
-      fullfile(fileparts(mfilename('fullpath')), '..', ...
-               'model', 'model-RhythmBlock_smdl.json');
+     fullfile(fileparts(mfilename('fullpath')), '..', ...
+              'model', 'model-RhythmBlockDecoding_smdl.json');
 
   % to add the hrf temporal derivative = [1 0]
   % to add the hrf temporal and dispersion derivative = [1 1]
@@ -63,12 +68,12 @@ function opt = getOptionBlock()
   %    - 'FDR'
   %    - 'none'
   %
-  % not working for multiple contrasts 
+  % not working for multiple contrasts
   opt.result.Steps(1).Contrasts(2).Name = 'CategA_gt_CategB';
   opt.result.Steps(1).Contrasts(2).MC =  'none';
   opt.result.Steps(1).Contrasts(2).p = 0.001;
   opt.result.Steps(1).Contrasts(2).k = 0;
-%   
+  %
   opt.result.Steps(1).Contrasts(3).Name = 'CategB_gt_CategA';
   opt.result.Steps(1).Contrasts(3).MC =  'none';
   opt.result.Steps(1).Contrasts(3).p = 0.001;
@@ -130,10 +135,10 @@ function opt = getOptionBlock()
   % Options for normalize
   % Voxel dimensions for resampling at normalization of functional data or leave empty [ ].
   opt.funcVoxelDims = [2.6 2.6 2.6];
-  
+
   opt.parallelize.do = true;
   opt.parallelize.nbWorkers = 4;
-  opt.parallelize.killOnExit = true; 
+  opt.parallelize.killOnExit = true;
 
   %% DO NOT TOUCH
   opt = checkOptions(opt);
