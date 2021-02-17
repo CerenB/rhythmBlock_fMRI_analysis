@@ -62,13 +62,16 @@ checkDependencies();
 % % bidsResults(opt, FWHM);
 %
 
-% MVPA - prep
-% funcFWHM = 0;
+%% MVPA - prep
+% funcFWHM = 2;
 % bidsSmoothing(funcFWHM, opt);
-%
+% % 
 % % subject level univariate
 % bidsFFX('specifyAndEstimate', opt, funcFWHM);
 % bidsFFX('contrasts', opt, funcFWHM);
+% %prep for mvpa
+% bidsConcatBetaTmaps(opt, funcFWHM);
+
 
 funcFWHM = 0;
 bidsSmoothing(funcFWHM, opt);
@@ -77,12 +80,8 @@ bidsSmoothing(funcFWHM, opt);
 bidsFFX('specifyAndEstimate', opt, funcFWHM);
 bidsFFX('contrasts', opt, funcFWHM);
 
-% strvcat(SPM.xX.name)
-%% mvpa prep
-funcFWHM = 0;
 % prep for mvpa
 bidsConcatBetaTmaps(opt, funcFWHM);
 
-funcFWHM = 2;
-% prep for mvpa
-bidsConcatBetaTmaps(opt, funcFWHM);
+% strvcat(SPM.xX.name)
+
