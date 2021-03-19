@@ -1,5 +1,5 @@
 {
-  "Name": "Rhythmic Category Decoding",
+  "Name": "Decoding 2regressor",
   "Description": "contrasts for the rhythm block dataset",
   "Input": {
     "task": "RhythmBlock"
