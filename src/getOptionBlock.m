@@ -12,8 +12,7 @@ function opt = getOptionBlock()
   % group of subjects to analyze
   opt.groups = {''};
   % suject to run in each group
-  opt.subjects = {'002', '003', '004', '005', '006','007',...
-                  '008', '009', '010'};
+  opt.subjects = {'001'};
   % '001', '002', '003', '004', '005', '006','007',...
                   %'008', '009', '010','011'
 
@@ -48,7 +47,7 @@ function opt = getOptionBlock()
   % multivariate
   opt.model.file =  ...
      fullfile(fileparts(mfilename('fullpath')), '..', ...
-              'model', 'model-RhythmBlockDecoding_smdl.json');
+              'model', 'model-RhythmBlockDecoding2_smdl.json');
 
   % to add the hrf temporal derivative = [1 0]
   % to add the hrf temporal and dispersion derivative = [1 1]
