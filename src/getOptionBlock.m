@@ -12,9 +12,10 @@ function opt = getOptionBlock()
   % group of subjects to analyze
   opt.groups = {''};
   % suject to run in each group
-  opt.subjects = {'001'};
+  opt.subjects = {'005', '006', '007', ...
+                  '008', '009', '010', '011'};
   % '001', '002', '003', '004', '005', '006','007',...
-                  %'008', '009', '010','011'
+  % '008', '009', '010','011'
 
   % Uncomment the lines below to run preprocessing
   % - don't use realign and unwarp
@@ -27,9 +28,9 @@ function opt = getOptionBlock()
   % The directory where the data are located
   opt.dataDir = fullfile(fileparts(mfilename('fullpath')), ...
                          '..', '..', '..',  'raw');
-                     
+
   opt.derivativesDir = fullfile(opt.dataDir, '..', 'derivatives', 'cpp_spm');
-  %opt.derivativesDir = fullfile(opt.dataDir, '..');
+  % opt.derivativesDir = fullfile(opt.dataDir, '..');
 
   % task to analyze
   opt.taskName = 'RhythmBlock';
@@ -139,8 +140,8 @@ function opt = getOptionBlock()
   % Voxel dimensions for resampling at normalization of functional data or leave empty [ ].
   opt.funcVoxelDims = [2.6 2.6 2.6];
 
-  opt.parallelize.do = false;
-  opt.parallelize.nbWorkers = 1;
+  opt.parallelize.do = true;
+  opt.parallelize.nbWorkers = 4;
   opt.parallelize.killOnExit = true;
 
   %% DO NOT TOUCH
