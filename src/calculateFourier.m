@@ -64,7 +64,7 @@ function [targetSNR, cfg, FT] = calculateFourier(X, Xraw, cfg)
   % 4. calculate SNR (z-score) of the target frequency based on the mean and SD of the
   % noise frequencies
   targetSNR = (abs(FT(targetFrequency, :)) - NoiseMean) ./ NoiseSD;
-  
+
   % 5. using the distribution of phase of the target frequency to define the sign
   targetPhase = angle(FT(targetFrequency, :));
 
