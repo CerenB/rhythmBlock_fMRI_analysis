@@ -7,3 +7,6 @@
 [submodule "lib/bids-R"]
 	path = lib/bids-R
 	url = https://github.com/marcobarilari/bids-R.git
+[submodule "lib/FFT_fMRI_analysis"]
+	path = lib/FFT_fMRI_analysis
+	url = https://github.com/CerenB/FFT_fMRI_analysis.git
