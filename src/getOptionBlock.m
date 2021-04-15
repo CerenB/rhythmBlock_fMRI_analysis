@@ -13,7 +13,7 @@ function opt = getOptionBlock()
   opt.groups = {''};
   % suject to run in each group
   opt.subjects = {'010'};
-  
+
   % '001', '002', '003', '004', '005', '006','007',...
   % '008', '009', '010','011'
 
@@ -136,7 +136,7 @@ function opt = getOptionBlock()
   opt.parallelize.do = true;
   opt.parallelize.nbWorkers = 4;
   opt.parallelize.killOnExit = true;
-    %% set paths
+  %% set paths
   [~, hostname] = system('hostname');
 
   if strcmp(deblank(hostname), 'tux')
