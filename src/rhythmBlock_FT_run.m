@@ -1,11 +1,13 @@
 clear;
 clc;
 
-% % cd(fileparts(mfilename('fullpath')));
-addpath(fullfile(fileparts(mfilename('fullpath')), '..'));
+pth = fullfile(fileparts(mfilename('fullpath')), '..');
+addpath(pth);
 
-% add cpp-spm lib
-initEnv();
+% add FFT analysis lib
+addpath(genpath(fullfile(pth, 'lib', 'FFT_fMRI_analysis')));
+% add cpp repo
+run ../lib/CPP_BIDS_SPM_pipeline/initCppSpm.m;
 
 % get all the parameters needed
 opt = getOptionBlock();
