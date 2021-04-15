@@ -28,11 +28,39 @@ function opt = getOptionBlock()
   % task to analyze
   opt.taskName = 'RhythmBlock';
 
+  
+    %% set paths
+  [~, hostname] = system('hostname');
+
+  if strcmp(deblank(hostname), 'tux')
+
+    % set spm
+    warning('off');
+    addpath(genpath('/home/tomo/Documents/MATLAB/spm12'));
+
+    opt.derivativesDir = fullfile( ...
+                                  '/datadisk/data/RhythmCateg-fMRI/RhythmBlock', ...
+                                  'cpp_spm');
+
+  elseif strcmp(deblank(hostname), 'mac-114-168.local')
+
+    % set spm
+    warning('off');
+    addpath(genpath('/Users/battal/Documents/MATLAB/spm12'));
+
+    % The directory where the data are located
+    opt.dataDir = fullfile(fileparts(mfilename('fullpath')), ...
+                           '..', '..', '..', 'data', 'raw');
+
+    opt.derivativesDir = fullfile(opt.dataDir, '..', ...
+                                  'derivatives', 'cpp_spm');
+
+  end
+
   % Suffix output directory for the saved jobs
   opt.jobsDir = fullfile( ...
                          opt.dataDir, '..', 'derivatives', ...
                          'cpp_spm', 'JOBS', opt.taskName);
-
   % specify the model file that contains the contrasts to compute
   % univariate
   %   opt.model.file =  ...
@@ -47,7 +75,7 @@ function opt = getOptionBlock()
   % to add the hrf temporal and dispersion derivative = [1 1]
   % opt.model.hrfDerivatives = [0 0];
 
-  % Specify the result to compute
+  %% Specify the result to compute
   opt.result.Steps(1) = returnDefaultResultsStructure();
 
   opt.result.Steps(1).Level = 'subject';
@@ -136,38 +164,7 @@ function opt = getOptionBlock()
   opt.parallelize.do = true;
   opt.parallelize.nbWorkers = 4;
   opt.parallelize.killOnExit = true;
-  %% set paths
-  [~, hostname] = system('hostname');
-
-  if strcmp(deblank(hostname), 'tux')
-
-    % set spm
-    warning('off');
-    addpath(genpath('/home/tomo/Documents/MATLAB/spm12'));
-
-    opt.derivativesDir = fullfile( ...
-                                  '/datadisk/data/RhythmCateg-fMRI/RhythmBlock', ...
-                                  'cpp_spm');
-
-  elseif strcmp(deblank(hostname), 'mac-114-168.local')
-
-    % set spm
-    warning('off');
-    addpath(genpath('/Users/battal/Documents/MATLAB/spm12'));
-
-    % The directory where the data are located
-    opt.dataDir = fullfile(fileparts(mfilename('fullpath')), ...
-                           '..', '..', '..', 'data', 'raw');
-
-    opt.derivativesDir = fullfile(opt.dataDir, '..', ...
-                                  'derivatives', 'cpp_spm');
-
-  end
-
-  % Suffix output directory for the saved jobs
-  opt.jobsDir = fullfile( ...
-                         opt.dataDir, '..', 'derivatives', ...
-                         'cpp_spm', 'JOBS', opt.taskName);
+                     
   %% DO NOT TOUCH
   opt = checkOptions(opt);
   saveOptions(opt);
