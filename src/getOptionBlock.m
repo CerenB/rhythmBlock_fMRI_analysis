@@ -12,7 +12,7 @@ function opt = getOptionBlock()
   % group of subjects to analyze
   opt.groups = {''};
   % suject to run in each group
-  opt.subjects = {'010'};
+  opt.subjects = {'011'};
 
   % '001', '002', '003', '004', '005', '006','007',...
   % '008', '009', '010','011'
@@ -28,33 +28,18 @@ function opt = getOptionBlock()
   % task to analyze
   opt.taskName = 'RhythmBlock';
 
-  
-    %% set paths
+  %% set paths
   [~, hostname] = system('hostname');
-
   if strcmp(deblank(hostname), 'tux')
-
-    % set spm
-    warning('off');
-    addpath(genpath('/home/tomo/Documents/MATLAB/spm12'));
-
     opt.derivativesDir = fullfile( ...
                                   '/datadisk/data/RhythmCateg-fMRI/RhythmBlock', ...
                                   'cpp_spm');
-
   elseif strcmp(deblank(hostname), 'mac-114-168.local')
-
-    % set spm
-    warning('off');
-    addpath(genpath('/Users/battal/Documents/MATLAB/spm12'));
-
     % The directory where the data are located
     opt.dataDir = fullfile(fileparts(mfilename('fullpath')), ...
                            '..', '..', '..', 'data', 'raw');
-
     opt.derivativesDir = fullfile(opt.dataDir, '..', ...
                                   'derivatives', 'cpp_spm');
-
   end
 
   % Suffix output directory for the saved jobs
@@ -164,7 +149,7 @@ function opt = getOptionBlock()
   opt.parallelize.do = true;
   opt.parallelize.nbWorkers = 4;
   opt.parallelize.killOnExit = true;
-                     
+
   %% DO NOT TOUCH
   opt = checkOptions(opt);
   saveOptions(opt);
