@@ -31,6 +31,7 @@ function opt = getOptionBlock()
   %% set paths
   [~, hostname] = system('hostname');
   if strcmp(deblank(hostname), 'tux')
+    opt.dataDir = fullfile('/datadisk/data/RhythmCateg-fMRI/RhythmBlock'); 
     opt.derivativesDir = fullfile( ...
                                   '/datadisk/data/RhythmCateg-fMRI/RhythmBlock', ...
                                   'cpp_spm');
@@ -148,7 +149,7 @@ function opt = getOptionBlock()
   opt.funcVoxelDims = [2.6 2.6 2.6];
 
   opt.parallelize.do = true;
-  opt.parallelize.nbWorkers = 4;
+  opt.parallelize.nbWorkers = 3;
   opt.parallelize.killOnExit = true;
 
   %% DO NOT TOUCH
