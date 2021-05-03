@@ -1,5 +1,5 @@
 {
-  "Name": "Rhythm Block design",
+  "Name": "RhythmBlock",
   "Description": "contrasts for the rhythmic block design dataset",
   "Input": {
     "task": "RhythmBlock"

@@ -1,5 +1,5 @@
 {
-  "Name": "Decoding 2regressor",
+  "Name": "mvpa 1-beta",
   "Description": "contrasts for the rhythm block dataset",
   "Input": {
     "task": "RhythmBlock"
