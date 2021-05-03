@@ -1,22 +1,29 @@
 clear;
 clc;
 
-% cd(fileparts(mfilename('fullpath')));
-
-addpath(fullfile(fileparts(mfilename('fullpath')), '..'));
+%% set paths
+% set spm
+[~, hostname] = system('hostname');
 warning('off');
-addpath(genpath('/Users/battal/Documents/MATLAB/spm12'));
-% spm fmri
+
+if strcmp(deblank(hostname), 'tux')
+  addpath(genpath('/home/tomo/Documents/MATLAB/spm12'));
+elseif strcmp(deblank(hostname), 'mac-114-168.local')
+  warning('off');
+  addpath(genpath('/Users/battal/Documents/MATLAB/spm12'));
+end
+
+% bspm fmri
 % addpath(genpath('/Users/battal/Documents/MATLAB/bspmview'));
 % add xjview
 % addpath(genpath('/Users/battal/Documents/MATLAB/xjview'));
 
-initEnv();
+% add cpp repo
+run ../lib/CPP_BIDS_SPM_pipeline/initCppSpm.m;
 
-% we add all the subfunctions that are in the sub directories
+% get all the parameters needed
 opt = getOptionBlock();
 
-checkDependencies();
 
 %% Run batches
 % reportBIDS(opt);
@@ -36,13 +43,13 @@ checkDependencies();
 % % functionalQA(opt);
 %
 % % smoothing
-% funcFWHM = 6;
+funcFWHM = 6;
 % bidsSmoothing(funcFWHM, opt);
 %
 %
-% % subject level univariate
-% bidsFFX('specifyAndEstimate', opt, funcFWHM);
-% bidsFFX('contrasts', opt, funcFWHM);
+% subject level univariate
+bidsFFX('specifyAndEstimate', opt, funcFWHM);
+bidsFFX('contrasts', opt, funcFWHM);
 %
 %
 % funcFWHM = 3;
@@ -63,23 +70,23 @@ checkDependencies();
 %
 
 %% MVPA - prep
-funcFWHM = 2;
-% bidsSmoothing(funcFWHM, opt);
-%
-% subject level univariate
-bidsFFX('specifyAndEstimate', opt, funcFWHM);
-bidsFFX('contrasts', opt, funcFWHM);
-% prep for mvpa
-bidsConcatBetaTmaps(opt, funcFWHM, 0, 0);
-
-funcFWHM = 0;
-% bidsSmoothing(funcFWHM, opt);
-
-% subject level univariate
-bidsFFX('specifyAndEstimate', opt, funcFWHM);
-bidsFFX('contrasts', opt, funcFWHM);
-
-% prep for mvpa
-bidsConcatBetaTmaps(opt, funcFWHM, 0, 0);
-
-% strvcat(SPM.xX.name)
+% funcFWHM = 2;
+% % bidsSmoothing(funcFWHM, opt);
+% %
+% % subject level univariate
+% bidsFFX('specifyAndEstimate', opt, funcFWHM);
+% bidsFFX('contrasts', opt, funcFWHM);
+% % prep for mvpa
+% bidsConcatBetaTmaps(opt, funcFWHM, 0, 0);
+% 
+% funcFWHM = 0;
+% % bidsSmoothing(funcFWHM, opt);
+% 
+% % subject level univariate
+% bidsFFX('specifyAndEstimate', opt, funcFWHM);
+% bidsFFX('contrasts', opt, funcFWHM);
+% 
+% % prep for mvpa
+% bidsConcatBetaTmaps(opt, funcFWHM, 0, 0);
+% 
+% % strvcat(SPM.xX.name)
