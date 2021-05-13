@@ -28,7 +28,7 @@ opt = getOptionBlock();
 %% FFT analysis
 
 opt.anatMask = 0;
-opt.FWHM = 0; % 3 or 6mm smoothing
+
 
 % create a whole brain functional mean image mask
 % so the mask will be in the same resolution/space as the functional images
@@ -40,10 +40,16 @@ opt.funcMask = bidsWholeBrainFuncMask(opt);
 
 % want to save each run FFT results
 opt.saveEachRun = 0;
-% step size
-opt.nStepsPerPeriod = 2;
-% run fft
-calculateSNR(opt);
 
-opt.nStepsPerPeriod = 4;
-calculateSNR(opt);
+for iSmooth = [2 3 6]
+    
+    opt.FWHM = iSmooth; % 0 2 3 or 6mm smoothing
+    
+    % step size
+    opt.nStepsPerPeriod = 2;
+    % run fft
+    calculateSNR(opt);
+    
+    opt.nStepsPerPeriod = 4;
+    calculateSNR(opt);
+end
