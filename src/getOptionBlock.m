@@ -12,7 +12,7 @@ function opt = getOptionBlock()
   % group of subjects to analyze
   opt.groups = {''};
   % suject to run in each group
-  opt.subjects = {'001','002'};
+  opt.subjects = {'011'};
 
   % '001', '002', '003', '004', '005', '006','007',...
   % '008', '009', '010','011'
@@ -41,6 +41,9 @@ function opt = getOptionBlock()
                            '..', '..', '..', 'data', 'raw');
     opt.derivativesDir = fullfile(opt.dataDir, '..', ...
                                   'derivatives', 'cpp_spm');
+                              
+    opt.roiDir = fullfile(fileparts(mfilename('fullpath')),  ...
+                           '..', '..', '..','..', 'RhythmCateg_ROI');
   end
 
   % Suffix output directory for the saved jobs

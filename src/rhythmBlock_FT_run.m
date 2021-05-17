@@ -28,20 +28,17 @@ opt = getOptionBlock();
 %% FFT analysis
 
 opt.anatMask = 0;
+opt.maskType = 'whole-brain'; 
+[opt.funcMask, opt.maskType] = getMaskFile(opt);
 
 
-% create a whole brain functional mean image mask
-% so the mask will be in the same resolution/space as the functional images
-% one may not need it if they are running bidsFFX since it creates a
-% mask.nii by default
-% opt.skullstrip.threshold = 0.5; -->provides bigger mask thn default value
-opt.skullstrip.mean = 1;
-opt.funcMask = bidsWholeBrainFuncMask(opt);
+opt.maskType = 'neurosynth'; 
+opt.funcMask = getMaskFile(opt);
 
 % want to save each run FFT results
 opt.saveEachRun = 0;
 
-for iSmooth = [2 3 6]
+for iSmooth = [0 2]
     
     opt.FWHM = iSmooth; % 0 2 3 or 6mm smoothing
     
