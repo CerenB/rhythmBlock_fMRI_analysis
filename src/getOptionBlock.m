@@ -12,7 +12,7 @@ function opt = getOptionBlock()
   % group of subjects to analyze
   opt.groups = {''};
   % suject to run in each group
-  opt.subjects = {'011'};
+  opt.subjects = {'001', '002', '003', '004', '005', '006','007','008', '009', '010'};
 
   % '001', '002', '003', '004', '005', '006','007',...
   % '008', '009', '010','011'
@@ -53,13 +53,13 @@ function opt = getOptionBlock()
                      
   % specify the model file that contains the contrasts to compute
     % univariate
-    opt.model.file =  ...
-        fullfile(fileparts(mfilename('fullpath')), '..', ...
-                 'model', 'model-RhythmBlock_smdl.json');
-%   % multivariate
-%   opt.model.file =  ...
-%      fullfile(fileparts(mfilename('fullpath')), '..', ...
-%               'model', 'model-RhythmBlockDecoding2_smdl.json');
+%     opt.model.file =  ...
+%         fullfile(fileparts(mfilename('fullpath')), '..', ...
+%                  'model', 'model-RhythmBlock_smdl.json');
+  % multivariate
+  opt.model.file =  ...
+     fullfile(fileparts(mfilename('fullpath')), '..', ...
+              'model', 'model-RhythmBlockDecoding1_smdl.json');
 
   % to add the hrf temporal derivative = [1 0]
   % to add the hrf temporal and dispersion derivative = [1 1]
