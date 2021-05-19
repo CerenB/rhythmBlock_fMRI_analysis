@@ -1,5 +1,5 @@
 {
-  "Name": "mvpa 1-beta",
+  "Name": "RhythmBlock",
   "Description": "contrasts for the rhythm block dataset",
   "Input": {
     "task": "RhythmBlock"
