@@ -12,7 +12,7 @@ function opt = getOptionBlock()
   % group of subjects to analyze
   opt.groups = {''};
   % suject to run in each group
-  opt.subjects = {'001', '002', '003', '004', '005', '006','007','008', '009', '010'};
+  opt.subjects = { '012'};
 
   % '001', '002', '003', '004', '005', '006','007',...
   % '008', '009', '010','011'
@@ -31,14 +31,14 @@ function opt = getOptionBlock()
   %% set paths
   [~, hostname] = system('hostname');
   if strcmp(deblank(hostname), 'tux')
-    opt.dataDir = fullfile('/datadisk/data/RhythmCateg-fMRI/RhythmBlock'); 
+    opt.dataDir = fullfile('/datadisk/data/RhythmCateg-fMRI/Nonmetric'); 
     opt.derivativesDir = fullfile( ...
-                                  '/datadisk/data/RhythmCateg-fMRI/RhythmBlock', ...
+                                  '/datadisk/data/RhythmCateg-fMRI/Nonmetric', ...
                                   'cpp_spm');
   elseif strcmp(deblank(hostname), 'mac-114-168.local')
     % The directory where the data are located
     opt.dataDir = fullfile(fileparts(mfilename('fullpath')), ...
-                           '..', '..', '..', 'data', 'raw');
+                           '..', '..', '..', 'raw');
     opt.derivativesDir = fullfile(opt.dataDir, '..', ...
                                   'derivatives', 'cpp_spm');
                               
@@ -53,13 +53,13 @@ function opt = getOptionBlock()
                      
   % specify the model file that contains the contrasts to compute
     % univariate
-%     opt.model.file =  ...
-%         fullfile(fileparts(mfilename('fullpath')), '..', ...
-%                  'model', 'model-RhythmBlock_smdl.json');
+    opt.model.file =  ...
+        fullfile(fileparts(mfilename('fullpath')), '..', ...
+                 'model', 'model-RhythmBlock_smdl.json');
   % multivariate
-  opt.model.file =  ...
-     fullfile(fileparts(mfilename('fullpath')), '..', ...
-              'model', 'model-RhythmBlockDecoding1_smdl.json');
+%   opt.model.file =  ...
+%      fullfile(fileparts(mfilename('fullpath')), '..', ...
+%               'model', 'model-RhythmBlockDecoding1_smdl.json');
 
   % to add the hrf temporal derivative = [1 0]
   % to add the hrf temporal and dispersion derivative = [1 1]
