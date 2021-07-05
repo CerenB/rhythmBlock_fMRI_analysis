@@ -12,10 +12,9 @@ function opt = getOptionBlock()
   % group of subjects to analyze
   opt.groups = {''};
   % suject to run in each group
-  opt.subjects = { '012'};
-
-  % '001', '002', '003', '004', '005', '006','007',...
-  % '008', '009', '010','011'
+  opt.subjects = {'001', '002', '003', '004', '005', '006','007',...
+                  '008', '009', '010','011', '012', '013', '014', ...
+                   '015', '016', '017', '018', '019'}; 
 
   % Uncomment the lines below to run preprocessing
   % - don't use realign and unwarp
