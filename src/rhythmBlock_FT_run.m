@@ -32,8 +32,8 @@ opt.maskType = 'whole-brain';
 [opt.funcMask, opt.maskType] = getMaskFile(opt);
 
 
-opt.maskType = 'neurosynth'; 
-opt.funcMask = getMaskFile(opt);
+% opt.maskType = 'neurosynth'; 
+% opt.funcMask = getMaskFile(opt);
 
 % want to save each run FFT results
 opt.saveEachRun = 0;
@@ -50,3 +50,16 @@ for iSmooth = [0 2]
     opt.nStepsPerPeriod = 4;
     calculateSNR(opt);
 end
+
+
+%%
+% group analysis - for now only in MNI
+% individual space would require fsaverage
+opt.nStepsPerPeriod = 2;
+opt.FWHM = 2;
+opt = groupAverageSNR(opt);
+
+
+
+
+

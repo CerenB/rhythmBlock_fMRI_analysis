@@ -12,11 +12,10 @@ function opt = getOptionBlock()
   % group of subjects to analyze
   opt.groups = {''};
   % suject to run in each group
-  opt.subjects = {'011'};
-
-  % '001', '002', '003', '004', '005', '006','007',...
-  % '008', '009', '010','011'
-
+  opt.subjects = {'020', '021', '023'}; 
+%   '001', '002', '003', '004', '005', '006','007',...
+%   '008', '009', '010','011', '012', '013', '014', ...
+%   '015', '016', '017', '018', '019'
   % Uncomment the lines below to run preprocessing
   % - don't use realign and unwarp
   opt.realign.useUnwarp = true;
@@ -31,14 +30,14 @@ function opt = getOptionBlock()
   %% set paths
   [~, hostname] = system('hostname');
   if strcmp(deblank(hostname), 'tux')
-    opt.dataDir = fullfile('/datadisk/data/RhythmCateg-fMRI/RhythmBlock'); 
+    opt.dataDir = fullfile('/datadisk/data/RhythmCateg-fMRI/Nonmetric'); 
     opt.derivativesDir = fullfile( ...
-                                  '/datadisk/data/RhythmCateg-fMRI/RhythmBlock', ...
+                                  '/datadisk/data/RhythmCateg-fMRI/Nonmetric', ...
                                   'cpp_spm');
   elseif strcmp(deblank(hostname), 'mac-114-168.local')
     % The directory where the data are located
     opt.dataDir = fullfile(fileparts(mfilename('fullpath')), ...
-                           '..', '..', '..', 'data', 'raw');
+                           '..', '..', '..', 'raw');
     opt.derivativesDir = fullfile(opt.dataDir, '..', ...
                                   'derivatives', 'cpp_spm');
                               
@@ -56,10 +55,10 @@ function opt = getOptionBlock()
     opt.model.file =  ...
         fullfile(fileparts(mfilename('fullpath')), '..', ...
                  'model', 'model-RhythmBlock_smdl.json');
-%   % multivariate
+  % multivariate
 %   opt.model.file =  ...
 %      fullfile(fileparts(mfilename('fullpath')), '..', ...
-%               'model', 'model-RhythmBlockDecoding2_smdl.json');
+%               'model', 'model-RhythmBlockDecoding1_smdl.json');
 
   % to add the hrf temporal derivative = [1 0]
   % to add the hrf temporal and dispersion derivative = [1 1]
@@ -151,8 +150,8 @@ function opt = getOptionBlock()
   % Voxel dimensions for resampling at normalization of functional data or leave empty [ ].
   opt.funcVoxelDims = [2.6 2.6 2.6];
 
-  opt.parallelize.do = true;
-  opt.parallelize.nbWorkers = 3;
+  opt.parallelize.do = false;
+  opt.parallelize.nbWorkers = 1;
   opt.parallelize.killOnExit = true;
 
   %% DO NOT TOUCH

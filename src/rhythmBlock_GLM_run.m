@@ -27,15 +27,15 @@ opt = getOptionBlock();
 
 %% Run batches
 % reportBIDS(opt);
-% bidsCopyRawFolder(opt, 1);
+bidsCopyRawFolder(opt, 1);
 %
 % % In case you just want to run segmentation and skull stripping
 % % Skull stripping is also included in 'bidsSpatialPrepro'
 %  bidsSegmentSkullStrip(opt);
 % %
-% bidsSTC(opt);
+bidsSTC(opt);
 % % %
-% bidsSpatialPrepro(opt);
+bidsSpatialPrepro(opt);
 %
 % % Quality control
 % % anatomicalQA(opt);
@@ -44,7 +44,7 @@ opt = getOptionBlock();
 %
 % % smoothing
 funcFWHM = 6;
-% bidsSmoothing(funcFWHM, opt);
+bidsSmoothing(funcFWHM, opt);
 %
 %
 % subject level univariate
@@ -52,25 +52,25 @@ bidsFFX('specifyAndEstimate', opt, funcFWHM);
 bidsFFX('contrasts', opt, funcFWHM);
 %
 %
-% funcFWHM = 3;
-% bidsSmoothing(funcFWHM, opt);
-% bidsFFX('specifyAndEstimate', opt, funcFWHM);
-% bidsFFX('contrasts', opt, funcFWHM);
+funcFWHM = 2;
+bidsSmoothing(funcFWHM, opt);
+bidsFFX('specifyAndEstimate', opt, funcFWHM);
+bidsFFX('contrasts', opt, funcFWHM);
 %
 % %visualise the results
 % %bidsResults(opt, funcFWHM);
 %
 % % % group level univariate
-% % conFWHM = 8;
-% % bidsRFX('smoothContrasts', opt,funcFWHM, conFWHM);
-% % bidsRFX('RFX', opt, funcFWHM, conFWHM);
+conFWHM = 8;
+bidsRFX('smoothContrasts', opt,funcFWHM, conFWHM);
+bidsRFX('RFX', opt, funcFWHM, conFWHM);
 %
 % % WIP: group level results
 % % bidsResults(opt, FWHM);
 %
 
 %% MVPA - prep
-% funcFWHM = 2;
+% funcFWHM = 0;
 % % bidsSmoothing(funcFWHM, opt);
 % %
 % % subject level univariate
