@@ -12,10 +12,10 @@ function opt = getOptionBlock()
   % group of subjects to analyze
   opt.groups = {''};
   % suject to run in each group
-  opt.subjects = {'001', '002', '003', '004', '005', '006','007',...
-                  '008', '009', '010','011', '012', '013', '014', ...
-                   '015', '016', '017', '018', '019'}; 
-
+  opt.subjects = {'020', '021', '023'}; 
+%   '001', '002', '003', '004', '005', '006','007',...
+%   '008', '009', '010','011', '012', '013', '014', ...
+%   '015', '016', '017', '018', '019'
   % Uncomment the lines below to run preprocessing
   % - don't use realign and unwarp
   opt.realign.useUnwarp = true;
@@ -150,8 +150,8 @@ function opt = getOptionBlock()
   % Voxel dimensions for resampling at normalization of functional data or leave empty [ ].
   opt.funcVoxelDims = [2.6 2.6 2.6];
 
-  opt.parallelize.do = true;
-  opt.parallelize.nbWorkers = 3;
+  opt.parallelize.do = false;
+  opt.parallelize.nbWorkers = 1;
   opt.parallelize.killOnExit = true;
 
   %% DO NOT TOUCH
