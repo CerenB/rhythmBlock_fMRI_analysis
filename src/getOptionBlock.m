@@ -12,7 +12,7 @@ function opt = getOptionBlock()
   % group of subjects to analyze
   opt.groups = {''};
   % suject to run in each group
-  opt.subjects = {'010'};
+  opt.subjects = {'011'};
 
   % '001', '002', '003', '004', '005', '006','007',...
   % '008', '009', '010','011'
@@ -23,7 +23,7 @@ function opt = getOptionBlock()
 
   % we stay in native space (that of the T1)
   % - in "native" space: don't do normalization
-  opt.space = 'individual'; % 'individual', 'MNI'
+  opt.space = 'MNI'; % 'individual', 'MNI'
 
   % task to analyze
   opt.taskName = 'RhythmBlock';
@@ -31,6 +31,7 @@ function opt = getOptionBlock()
   %% set paths
   [~, hostname] = system('hostname');
   if strcmp(deblank(hostname), 'tux')
+    opt.dataDir = fullfile('/datadisk/data/RhythmCateg-fMRI/RhythmBlock'); 
     opt.derivativesDir = fullfile( ...
                                   '/datadisk/data/RhythmCateg-fMRI/RhythmBlock', ...
                                   'cpp_spm');
@@ -40,6 +41,9 @@ function opt = getOptionBlock()
                            '..', '..', '..', 'data', 'raw');
     opt.derivativesDir = fullfile(opt.dataDir, '..', ...
                                   'derivatives', 'cpp_spm');
+                              
+    opt.roiDir = fullfile(fileparts(mfilename('fullpath')),  ...
+                           '..', '..', '..','..', 'RhythmCateg_ROI');
   end
 
   % Suffix output directory for the saved jobs
@@ -148,7 +152,7 @@ function opt = getOptionBlock()
   opt.funcVoxelDims = [2.6 2.6 2.6];
 
   opt.parallelize.do = true;
-  opt.parallelize.nbWorkers = 4;
+  opt.parallelize.nbWorkers = 3;
   opt.parallelize.killOnExit = true;
 
   %% DO NOT TOUCH
