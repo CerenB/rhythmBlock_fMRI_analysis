@@ -10,6 +10,6 @@
 [submodule "lib/FFT_fMRI_analysis"]
 	path = lib/FFT_fMRI_analysis
 	url = https://github.com/CerenB/FFT_fMRI_analysis.git
-[submodule "spmScripts"]
-	path = spmScripts
+[submodule "lib/spmScripts"]
+	path = lib/spmScripts
 	url = https://github.com/CerenB/spmScripts.git
