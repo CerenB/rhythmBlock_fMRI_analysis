@@ -32,3 +32,6 @@ end
 % 0019 : simple
 % 0020 : complex/nonmetric
 % 0023 : all sounds
+
+% all pitch 
+% df = 873 

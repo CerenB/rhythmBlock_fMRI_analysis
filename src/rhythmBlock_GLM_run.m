@@ -9,8 +9,14 @@ warning('off');
 if strcmp(deblank(hostname), 'tux')
   addpath(genpath('/home/tomo/Documents/MATLAB/spm12'));
 elseif strcmp(deblank(hostname), 'mac-114-168.local')
+  
+  %add spm
   warning('off');
   addpath(genpath('/Users/battal/Documents/MATLAB/spm12'));
+  
+  %add submodule into path
+  pth = fullfile(fileparts(mfilename('fullpath')), '..');
+  addpath(genpath(fullfile(pth, 'lib', 'spmScripts')));
 end
 
 % bspm fmri
@@ -67,7 +73,7 @@ bidsRFX('RFX', opt, funcFWHM, conFWHM);
 %
 % % WIP: group level results
 % % bidsResults(opt, FWHM);
-%
+bidsResults(opt, funcFWHM);
 
 %% MVPA - prep
 % funcFWHM = 0;
@@ -90,3 +96,11 @@ bidsRFX('RFX', opt, funcFWHM, conFWHM);
 % bidsConcatBetaTmaps(opt, funcFWHM, 0, 0);
 % 
 % % strvcat(SPM.xX.name)
+
+
+%% for GLM vs. FT analysis comparison make z-scored images
+funcFWHM = 6;
+conFWHM = 8;
+
+makeZscoreMaps(funcFWHM, opt);
+getFFXDir
