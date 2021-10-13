@@ -12,11 +12,11 @@ function opt = getOptionBlock()
   % group of subjects to analyze
   opt.groups = {''};
   % suject to run in each group
-  opt.subjects = {'001'}; 
-               
-%   '001', '002', '003', '004', '005', '006','007',...
-%   '008', '009', '010','011', '012', '013', '014', ...
-%   '015', '016', '017', '018', '019', '020', '021', '023'
+  opt.subjects = {'001'};
+
+  %   '001', '002', '003', '004', '005', '006','007',...
+  %   '008', '009', '010','011', '012', '013', '014', ...
+  %   '015', '016', '017', '018', '019', '020', '021', '023'
 
   % Uncomment the lines below to run preprocessing
   % - don't use realign and unwarp
@@ -32,7 +32,7 @@ function opt = getOptionBlock()
   %% set paths
   [~, hostname] = system('hostname');
   if strcmp(deblank(hostname), 'tux')
-    opt.dataDir = fullfile('/datadisk/data/RhythmCateg-fMRI/RhythmBlock'); 
+    opt.dataDir = fullfile('/datadisk/data/RhythmCateg-fMRI/RhythmBlock');
     opt.derivativesDir = fullfile( ...
                                   '/datadisk/data/RhythmCateg-fMRI/RhythmBlock', ...
                                   'cpp_spm');
@@ -42,25 +42,25 @@ function opt = getOptionBlock()
                            '..', '..', '..', 'raw');
     opt.derivativesDir = fullfile(opt.dataDir, '..', ...
                                   'derivatives', 'cpp_spm');
-                              
+
     opt.roiDir = fullfile(fileparts(mfilename('fullpath')),  ...
-                           '..', '..', '..','..', 'RhythmCateg_ROI');
+                          '..', '..', '..', '..', 'RhythmCateg_ROI');
   end
 
   % Suffix output directory for the saved jobs
   opt.jobsDir = fullfile( ...
                          opt.dataDir, '..', 'derivatives', ...
                          'cpp_spm', 'JOBS', opt.taskName);
-                     
+
   % specify the model file that contains the contrasts to compute
-    % univariate
-    opt.model.file =  ...
-        fullfile(fileparts(mfilename('fullpath')), '..', ...
-                 'model', 'model-RhythmBlock_smdl.json');
+  % univariate
+  opt.model.file =  ...
+      fullfile(fileparts(mfilename('fullpath')), '..', ...
+               'model', 'model-RhythmBlock_smdl.json');
   % multivariate
-%   opt.model.file =  ...
-%      fullfile(fileparts(mfilename('fullpath')), '..', ...
-%               'model', 'model-RhythmBlockDecoding1_smdl.json');
+  %   opt.model.file =  ...
+  %      fullfile(fileparts(mfilename('fullpath')), '..', ...
+  %               'model', 'model-RhythmBlockDecoding1_smdl.json');
 
   % to add the hrf temporal derivative = [1 0]
   % to add the hrf temporal and dispersion derivative = [1 1]
@@ -84,16 +84,16 @@ function opt = getOptionBlock()
   %    - 'FDR'
   %    - 'none'
   %
-%   % not working for multiple contrasts
-%   opt.result.Steps(1).Contrasts(2).Name = 'CategA_gt_CategB';
-%   opt.result.Steps(1).Contrasts(2).MC =  'none';
-%   opt.result.Steps(1).Contrasts(2).p = 0.001;
-%   opt.result.Steps(1).Contrasts(2).k = 0;
-%   %
-%   opt.result.Steps(1).Contrasts(3).Name = 'CategB_gt_CategA';
-%   opt.result.Steps(1).Contrasts(3).MC =  'none';
-%   opt.result.Steps(1).Contrasts(3).p = 0.001;
-%   opt.result.Steps(1).Contrasts(3).k = 0;
+  %   % not working for multiple contrasts
+  %   opt.result.Steps(1).Contrasts(2).Name = 'CategA_gt_CategB';
+  %   opt.result.Steps(1).Contrasts(2).MC =  'none';
+  %   opt.result.Steps(1).Contrasts(2).p = 0.001;
+  %   opt.result.Steps(1).Contrasts(2).k = 0;
+  %   %
+  %   opt.result.Steps(1).Contrasts(3).Name = 'CategB_gt_CategA';
+  %   opt.result.Steps(1).Contrasts(3).MC =  'none';
+  %   opt.result.Steps(1).Contrasts(3).p = 0.001;
+  %   opt.result.Steps(1).Contrasts(3).k = 0;
 
   % Specify how you want your output (all the following are on false by default)
   opt.result.Steps(1).Output.png = true();
