@@ -59,7 +59,9 @@ opt = groupAverageSNR(opt);
 
 %% visualisation - 18.11.2021
 % threshold group averaged FT map
-opt.nStepsPerPeriod = 4;
+% in block design with FFT analysis - All sounds contrast
+opt.nStepsPerPeriod = 2;
 opt.FWHM = 6;
-pvalue = 1e-4;
+pvalue = 1e-6;
+opt.save.zmap = true;
 groupLevelzMapThreshold (opt, pvalue)
