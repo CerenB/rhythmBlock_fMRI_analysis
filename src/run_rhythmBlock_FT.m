@@ -56,3 +56,10 @@ end
 opt.nStepsPerPeriod = 4;
 opt.FWHM = 6;
 opt = groupAverageSNR(opt);
+
+%% visualisation - 18.11.2021
+% threshold group averaged FT map
+opt.nStepsPerPeriod = 4;
+opt.FWHM = 6;
+pvalue = 1e-4;
+groupLevelzMapThreshold (opt, pvalue)

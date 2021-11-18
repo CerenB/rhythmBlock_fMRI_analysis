@@ -9,14 +9,12 @@ function opt = getOptionBlock()
     opt = [];
   end
 
-  % group of subjects to analyze
-  opt.groups = {''};
   % suject to run in each group
-  opt.subjects = {'001'};
-
-  %   '001', '002', '003', '004', '005', '006','007',...
-  %   '008', '009', '010','011', '012', '013', '014', ...
-  %   '015', '016', '017', '018', '019', '020', '021', '023'
+  opt.subjects = {'001', '002', '003', '004', '005', '006',...
+                  '007', '008', '009', '010', '011', '012', ...
+                   '013', '014', '015', '016', '017', '018', ...
+                   '019', '020', '021', '023'};
+%   opt.subjects = {'001'};
 
   % Uncomment the lines below to run preprocessing
   % - don't use realign and unwarp
@@ -42,9 +40,9 @@ function opt = getOptionBlock()
                            '..', '..', '..', 'raw');
     opt.derivativesDir = fullfile(opt.dataDir, '..', ...
                                   'derivatives', 'cpp_spm');
-
-    opt.roiDir = fullfile(fileparts(mfilename('fullpath')),  ...
-                          '..', '..', '..', '..', 'RhythmCateg_ROI');
+                              
+%     opt.dir.roi = fullfile(fileparts(mfilename('fullpath')),  ...
+%                           '..', '..', '..', '..', 'RhythmCateg_ROI', 'hmat');
   end
 
   % Suffix output directory for the saved jobs
@@ -57,10 +55,10 @@ function opt = getOptionBlock()
   opt.model.file =  ...
       fullfile(fileparts(mfilename('fullpath')), '..', ...
                'model', 'model-RhythmBlock_smdl.json');
-  % multivariate
-  %   opt.model.file =  ...
-  %      fullfile(fileparts(mfilename('fullpath')), '..', ...
-  %               'model', 'model-RhythmBlockDecoding1_smdl.json');
+%  multivariate
+%     opt.model.file =  ...
+%        fullfile(fileparts(mfilename('fullpath')), '..', ...
+%                 'model', 'model-RhythmBlockDecoding1_smdl.json');
 
   % to add the hrf temporal derivative = [1 0]
   % to add the hrf temporal and dispersion derivative = [1 1]
