@@ -51,7 +51,7 @@
     },
     {
       "Level": "dataset",
-      "AutoContrasts": ["trial_type.block_simple", "trial_type.block_complex", "CategA_gt_CategB", "CategB_gt_CategA","AllCateg"]
+      "AutoContrasts": ["trial_type.block_simple", "trial_type.block_complex", "CategA_gt_CategB", "CategB_gt_CategA", "AllCateg"]
     }
   ]
 }

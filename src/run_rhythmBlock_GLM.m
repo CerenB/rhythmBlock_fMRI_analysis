@@ -33,6 +33,8 @@ opt = getOptionBlock();
 %% Run batches
 % reportBIDS(opt);
 bidsCopyRawFolder(opt, 1);
+
+bidsCopyRawFolder(opt, 1,'func');
 %
 % % In case you just want to run segmentation and skull stripping
 % % Skull stripping is also included in 'bidsSpatialPrepro'

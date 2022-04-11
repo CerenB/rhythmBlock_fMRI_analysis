@@ -27,10 +27,21 @@ inputImgName = fullfile(inputImagePath, 'ComplexvsRest_Block_p0001_uncorr.nii');
 [img, outputName] = convertTstatsToZscore(inputImgName,  df);
 
 
-inputImgName = fullfile(inputImagePath, 'ComplexvsRest_Block_p005_fwe.nii');
-[img, outputName] = convertTstatsToZscore(inputImgName,  df);
+% inputImgName = fullfile(inputImagePath, 'ComplexvsRest_Block_p005_fwe.nii');
+% [img, outputName] = convertTstatsToZscore(inputImgName,  df);
 
 % block_simple
 inputImagePath = fullfile(mainpath,'block_simple');
-inputImgName = fullfile(inputImagePath, 'ComplexvsRest_Block_p0001_uncorr.nii');
+inputImgName = fullfile(inputImagePath, 'SimplevsRest_Block_p0001_uncorr.nii');
 [img, outputName] = convertTstatsToZscore(inputImgName,  df);
+
+
+
+% block_simple vs. complex
+inputImagePath = fullfile(mainpath,'CategA_gt_CategB');
+inputImgName = fullfile(inputImagePath, 'SimplevsComplex_Block_p0001_uncorr.nii');
+[img, outputName] = convertTstatsToZscore(inputImgName,  df);
+
+
+
+
