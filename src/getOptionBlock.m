@@ -11,7 +11,7 @@ function opt = getOptionBlock()
 
   % suject to run in each group
   % bad tappers
-    opt.subjects = {'026'};
+    opt.subjects = {'025'};
 % good tappers
 %   opt.subjects = {'001', '002', '005', '007', ...
 %                   '008', '009', '010', '012', '014', ...
@@ -88,16 +88,16 @@ function opt = getOptionBlock()
   %    - 'FDR'
   %    - 'none'
   %
-  %   % not working for multiple contrasts
-  %   opt.result.Steps(1).Contrasts(2).Name = 'CategA_gt_CategB';
-  %   opt.result.Steps(1).Contrasts(2).MC =  'none';
-  %   opt.result.Steps(1).Contrasts(2).p = 0.001;
-  %   opt.result.Steps(1).Contrasts(2).k = 0;
-  %   %
-  %   opt.result.Steps(1).Contrasts(3).Name = 'CategB_gt_CategA';
-  %   opt.result.Steps(1).Contrasts(3).MC =  'none';
-  %   opt.result.Steps(1).Contrasts(3).p = 0.001;
-  %   opt.result.Steps(1).Contrasts(3).k = 0;
+    % not working for multiple contrasts
+    opt.result.Steps(1).Contrasts(2).Name = 'CategA_gt_CategB';
+    opt.result.Steps(1).Contrasts(2).MC =  'none';
+    opt.result.Steps(1).Contrasts(2).p = 0.001;
+    opt.result.Steps(1).Contrasts(2).k = 0;
+    %
+    opt.result.Steps(1).Contrasts(3).Name = 'CategB_gt_CategA';
+    opt.result.Steps(1).Contrasts(3).MC =  'none';
+    opt.result.Steps(1).Contrasts(3).p = 0.001;
+    opt.result.Steps(1).Contrasts(3).k = 0;
 
   % Specify how you want your output (all the following are on false by default)
   opt.result.Steps(1).Output.png = true();
