@@ -9,18 +9,23 @@ function opt = getOptionBlock()
     opt = [];
   end
 
-  % suject to run in each group
-  % bad tappers
-    opt.subjects = {'025'};
+  % group of subjects to analyze
+  opt.groups = {''};
+  opt.session = '001';
+  
+%   opt.subjects = {'011'}; 
+
 % good tappers
 %   opt.subjects = {'001', '002', '005', '007', ...
 %                   '008', '009', '010', '012', '014', ...
 %                    '015', '016', '021'};
-
-%   opt.subjects = {'001', '002', '003', '004', '005', '006',...
-%                   '007', '008', '009', '010', '011', '012', ...
-%                    '013', '014', '015', '016', '017', '018', ...
-%                    '019', '020', '021', '023'};
+% % 
+  opt.subjects = {'001', '002', '003', '004', '005', '006',...
+                  '007', '008', '009', '010', '011', '012', ...
+                  '013', '014', '015', '016', '017', '018', ...
+                  '019', '020', '021', '023', '024', '025', ...
+                  '026', '027', '028', '029', '030', '031', ...
+                  '032', '033'};
 
   % Uncomment the lines below to run preprocessing
   % - don't use realign and unwarp
@@ -57,14 +62,14 @@ function opt = getOptionBlock()
                          'cpp_spm', 'JOBS', opt.taskName);
 
   % specify the model file that contains the contrasts to compute
-  % univariate
-  opt.model.file =  ...
-      fullfile(fileparts(mfilename('fullpath')), '..', ...
-               'model', 'model-RhythmBlock_smdl.json');
-%  multivariate
-%     opt.model.file =  ...
-%        fullfile(fileparts(mfilename('fullpath')), '..', ...
-%                 'model', 'model-RhythmBlockDecoding1_smdl.json');
+%   % univariate
+%   opt.model.file =  ...
+%       fullfile(fileparts(mfilename('fullpath')), '..', ...
+%                'model', 'model-RhythmBlock-OnlyPitch_smdl.json');
+
+    opt.model.file =  ...
+       fullfile(fileparts(mfilename('fullpath')), '..', ...
+                'model', 'model-RhythmBlock_smdl.json');
 
   % to add the hrf temporal derivative = [1 0]
   % to add the hrf temporal and dispersion derivative = [1 1]
@@ -98,6 +103,16 @@ function opt = getOptionBlock()
     opt.result.Steps(1).Contrasts(3).MC =  'none';
     opt.result.Steps(1).Contrasts(3).p = 0.001;
     opt.result.Steps(1).Contrasts(3).k = 0;
+      
+    opt.result.Steps(1).Contrasts(4).Name = 'Complex';
+    opt.result.Steps(1).Contrasts(4).MC =  'none';
+    opt.result.Steps(1).Contrasts(4).p = 0.001;
+    opt.result.Steps(1).Contrasts(4).k = 0;
+  
+    opt.result.Steps(1).Contrasts(5).Name = 'Simple';
+    opt.result.Steps(1).Contrasts(5).MC =  'none';
+    opt.result.Steps(1).Contrasts(5).p = 0.001;
+    opt.result.Steps(1).Contrasts(5).k = 0;
 
   % Specify how you want your output (all the following are on false by default)
   opt.result.Steps(1).Output.png = true();
@@ -109,7 +124,7 @@ function opt = getOptionBlock()
   opt.result.Steps(1).Output.binary = true();
 
   opt.result.Steps(1).Output.montage.do = true();
-  opt.result.Steps(1).Output.montage.slices = -12:4:60; % in mm -8:3:15;
+  opt.result.Steps(1).Output.montage.slices = 40:5:60; % in mm -8:3:15; % -12:4:60
   % axial is default 'sagittal', 'coronal'
   opt.result.Steps(1).Output.montage.orientation = 'axial';
 
