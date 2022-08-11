@@ -58,6 +58,9 @@ bidsFFX('specifyAndEstimate', opt, funcFWHM);
 bidsFFX('contrasts', opt, funcFWHM);
 %
 %
+bidsResults(opt, funcFWHM);
+
+
 funcFWHM = 2;
 bidsSmoothing(funcFWHM, opt);
 bidsFFX('specifyAndEstimate', opt, funcFWHM);
@@ -73,7 +76,7 @@ bidsRFX('RFX', opt, funcFWHM, conFWHM);
 %
 % % WIP: group level results
 % % bidsResults(opt, FWHM);
-bidsResults(opt, funcFWHM);
+
 
 %% MVPA - prep
 % funcFWHM = 0;
